@@ -1,0 +1,44 @@
+{
+  "name": "fusion-php",
+  "version": "1.0.0",
+  "description": "PHP projelerinizi Electron ile masaüstü uygulamasına dönüştüren modern altyapı.",
+  "main": "fusion.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --no-asar --icon=icons/logo.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . FusionPHP --overwrite --no-asar --platform=win32 --arch=ia32 --icon=icons/logo.ico --prune=true --out=release-builds --version-string.CompanyName=\"Mehmet Akar\" --version-string.FileDescription=\"FusionPHP Masaüstü Uygulaması\" --version-string.ProductName=\"FusionPHP\"",
+    "package-linux": "electron-packager . FusionPHP --overwrite --no-asar --platform=linux --arch=x64 --icon=icons/logo.png --prune=true --out=release-builds",
+    "dist": "electron-builder"
+  },
+  "repository": "https://github.com/mehmetakarim/FusionPHP",
+  "keywords": [
+    "Electron",
+    "php",
+    "techsoul"
+  ],
+  "author": "Mehmet Akar",
+  "devDependencies": {
+    "electron": "^39.2.6",
+    "electron-builder": "^26.0.12",
+    "electron-packager": "^17.1.2",
+    "electron-winstaller": "^5.4.0"
+  },
+  "build": {
+    "appId": "com.mehmetakar.fusionphp",
+    "win": {
+      "target": "nsis"
+    },
+    "npmRebuild": false,
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "**/*",
+      "!release-builds/**/*"
+    ]
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
+  }
+}
